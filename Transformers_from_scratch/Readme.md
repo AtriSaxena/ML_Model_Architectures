@@ -24,6 +24,6 @@ Below are class names which are used in code and their Model Architecture Image,
 
 ![](https://i.imgur.com/V8mQSwq.png)
 
-### Tranformer Class 
+### Transformer Class 
 
 ![Transformer: Model Architecture](https://i.imgur.com/Rr4AdFs.png)
