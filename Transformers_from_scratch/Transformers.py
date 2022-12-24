@@ -1,3 +1,9 @@
+"""
+Implementation of Transformers from scratch in pytorch.
+From paper: (Attention is All you Need)https://arxiv.org/pdf/1706.03762.pdf 
+Github: https://github.com/AtriSaxena
+Author: Atri Saxena
+"""
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -69,7 +75,7 @@ class MultiHeadAttention(nn.Module):
 
 
 class TransformerBlock(nn.Module):
-    """Some Information about TransformerBlock"""
+    """TransformerBlock"""
     def __init__(self, embed_size, heads, dropout, forward_expansion):
         super(TransformerBlock, self).__init__()
         self.attention = MultiHeadAttention(embed_size, heads)
@@ -99,7 +105,7 @@ class TransformerBlock(nn.Module):
 
 
 class Encoder(nn.Module):
-    """Some Information about Encoder"""
+    """Encoder"""
     def __init__(self, src_vocab_size, 
                         embed_size,
                         num_layers,
@@ -124,9 +130,10 @@ class Encoder(nn.Module):
 
     def forward(self, x, mask):
         N, seq_length = x.shape 
-        #print(N, seq_length,x.shape)
-        #print(self.max_length, self.embed_size )
+
         positions = torch.arange(0, seq_length).expand(N, seq_length).to(self.device)
+        # Position Embedding are used. As in paper both sin, cos embedding having same results.
+        # But I feel implementing these embedding much simple to implement.
         out = self.dropout((self.word_embedding(x) + self.positional_embedding(positions)))
 
         # In the Encoder the query, key, value are all the same, it's in the
