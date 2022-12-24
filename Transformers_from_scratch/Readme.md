@@ -6,6 +6,7 @@ Implementation of research paper: Attention is all you Need (https://arxiv.org/p
 
 ![](https://i.imgur.com/eOXt35h.png)
 
+Below are class names which are used in code and their Model Architecture Image, which can help you understand the code.
 
 ### TransformerBlock Class
 
